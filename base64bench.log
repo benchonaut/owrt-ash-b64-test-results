@@ -1,0 +1,65 @@
+system type		: Atheros AR7242 rev 1
+machine			: TP-LINK TL-WR2543N/ND
+mtd1: 001503bc 00010000 "kernel"
+raw dd
+size:1344
+1+1 records in
+1+1 records out
+real	0m 0.60s
+user	0m 0.02s
+sys	0m 0.57s
+raw cat time
+real	0m 0.59s
+user	0m 0.02s
+sys	0m 0.53s
+base64 markusfisch
+real	0m 0.79s
+user	0m 0.16s
+sys	0m 0.57s
+base64 matezusa
+real	14m 47.14s
+user	13m 10.08s
+sys	0m 49.91s
+mtd2: 0067fc44 00010000 "rootfs"
+raw dd
+size:6655
+6+1 records in
+6+1 records out
+real	0m 2.85s
+user	0m 0.03s
+sys	0m 2.78s
+raw cat time
+real	0m 2.85s
+user	0m 0.05s
+sys	0m 2.67s
+base64 markusfisch
+real	0m 3.61s
+user	0m 0.62s
+sys	0m 2.77s
+base64 matezusa
+sed: out of memory
+real	1m 35.98s
+user	1m 18.47s
+sys	0m 7.21s
+mtd3: 00430000 00010000 "rootfs_data"
+raw dd
+size:4288
+4+1 records in
+4+1 records out
+real	0m 2.00s
+user	0m 0.04s
+sys	0m 1.92s
+raw cat time
+real	0m 1.86s
+user	0m 0.04s
+sys	0m 1.71s
+base64 markusfisch
+real	0m 2.34s
+user	0m 0.43s
+sys	0m 1.78s
+base64 matezusa
+sed: out of memory
+real	1m 52.43s
+user	1m 43.04s
+sys	0m 7.72s
+
