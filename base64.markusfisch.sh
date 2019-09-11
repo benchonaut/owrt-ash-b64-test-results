@@ -1,8 +1,5 @@
 #!/bin/bash
 
-##imported from https://gist.github.com/markusfisch/2648733
-
-
 # Fallback base64 en-/decoder for systems that lack a native implementation
 #
 # @param ... - flags
@@ -137,11 +134,17 @@ base64()
 			fi
 
 			(( ++N == 4 )) && {
-				for (( S=16; S > -1; S -= 8 ))
+##	replace for		#for ( sms=16; sms > -1; sms -= 8 )
+				sms=16
+				while [ "$sms" -gt -1 ]
+##
 				do
-					C=$(( V >> S & 255 ))
+					C=$(( V >> sms & 255 ))
 					# shellcheck disable=SC2059
 					printf "\\$(( C*100/64+C%64*10/8+C%8 ))"
+## replace for 
+				sms=$(( sms - 8 ))
+## replace for
 				done
 
 				V=0
@@ -157,13 +160,19 @@ base64()
 
 		while read -r -a A
 		do
-			for (( N=1, L=${#A[@]}; N < L; ++N ))
+##	replace for		#for (( N=1, L=${#A[@]}; N < L; ++N ))
+			N=1;L=${#A[@]}
+			while [ "$N" -lt "$L" ]
 			do
 				V=$(( 16#${A[$N]} << SH | V ))
 
 				(( (SH -= 8) < 0 )) || continue
 
-				for (( S=18; S > -1; S -= 6 ))
+##	replace for		#for (( S=18; S > -1; S -= 6 ))
+				S=18
+				while [ "$S" -gt -1 ]
+##      replace for
+
 				do
 					echo -n ${SET:$(( V >> S & 63 )):1}
 
@@ -171,10 +180,17 @@ base64()
 						echo
 						W=0
 					}
+##      replace for
+				S=$(( S - 6 ))		
+##      replace for
 				done
 
 				SH=16
 				V=0
+##      replace for
+				 N=$(( N + 1 ))
+##      replace for
+ 
 			done
 		done
 
@@ -189,7 +205,10 @@ base64()
 		fi
 
 		(( N )) && {
-			for (( S=18; S > N; S -= 6 ))
+##      replace for 	#for (( S=18; S > N; S -= 6 ))
+			S=18
+			while [ "$S" -gt "$N" ]
+##      replace for
 			do
 				echo -n ${SET:$(( V >> S & 63 )):1}
 
@@ -197,11 +216,21 @@ base64()
 					echo
 					W=0
 				}
+##      replace for
+			S=$(( S - 6 ))
+##      replace for
 			done
 
-			for (( S=N/5; S--; ))
+##      replace for	#for (( S=N/5; S--; ))
+			S=$( expr "$N" "/" 5 )
+                        while [ "$S" -gt -1 ]
+##      replace for
+			
 			do
 				echo -n '='
+##      replace for
+			S=$(( S - 1 ))
+##      replace for
 			done
 		}
 
